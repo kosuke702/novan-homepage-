@@ -12,7 +12,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <Image
-          src="/ガラス割れる.jpg"
+          src="/ガラス割れ.jpg"
           alt="Breaking Glass Background"
           fill
           className="object-cover brightness-75"

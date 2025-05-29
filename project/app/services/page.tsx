@@ -4,8 +4,35 @@ import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
-import { FileInput, MousePointerClick, Play, Share2 } from 'lucide-react';
+import {
+  FileInput,
+  MousePointerClick,
+  Play,
+  Share2,
+  ArrowRightCircle,
+  CheckCircle2,
+  XCircle,
+} from 'lucide-react';
 import Image from 'next/image';
+
+const problemSolutionPairs = [
+  {
+    problem: "高コスト",
+    solution: "自動化によるコスト削減",
+  },
+  {
+    problem: "制作期間の長さ",
+    solution: "高速なコンテンツ作成",
+  },
+  {
+    problem: "人材不足・スキル不足",
+    solution: "専門スキル不要の簡便さ",
+  },
+  {
+    problem: "品質維持・改善の難しさ",
+    solution: "品質とクリエイティビティの両立",
+  },
+];
 
 export default function ServicesPage() {
   return (
@@ -14,7 +41,7 @@ export default function ServicesPage() {
       <div className="relative">
         <div className="absolute inset-0">
           <Image
-            src="/ガラス割れる copy.jpg"
+            src="/ガラス割れ.jpg"
             alt="Background"
             fill
             className="object-cover"
@@ -45,78 +72,35 @@ export default function ServicesPage() {
             広告動画作成における既存の課題とその解決策
           </motion.h2>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Challenges */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
-              <Card className="p-6 border-red-200 bg-red-50">
-                <h3 className="text-xl font-semibold text-red-700 mb-4">高コスト</h3>
-                <p className="text-gray-700">
-                  プロの映像制作で、撮影、編集で多額の費用がかかる。外部の制作会社に依頼すると、30秒程度の動画でも数十万円以上かかるケースがあり、頻繁に動画を作成・更新するのは難しい。
-                </p>
-              </Card>
+          <div className="space-y-12">
+            {problemSolutionPairs.map((pair, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                className="md:grid md:grid-cols-[1fr_auto_1fr] md:gap-x-8 items-center"
+              >
+                <Card className="p-6 bg-white shadow-lg rounded-lg border-l-4 border-red-500 mb-4 md:mb-0">
+                  <h3 className="flex items-center justify-center text-2xl font-semibold text-gray-800 text-center">
+                    <XCircle className="w-7 h-7 text-red-500 mr-2" />
+                    {pair.problem}
+                  </h3>
+                </Card>
 
-              <Card className="p-6 border-red-200 bg-red-50">
-                <h3 className="text-xl font-semibold text-red-700 mb-4">制作期間の長さ</h3>
-                <p className="text-gray-700">
-                  企画から納品までに数週間から数ヶ月かかることも珍しくなく、スピード感を持ってマーケティング施策を展開する妨げになっている。特にトレンドの移り変わりが早いSNS広告では、制作の遅さが機会損失に直結してしまう。
-                </p>
-              </Card>
+                <div className="hidden md:flex justify-center items-center">
+                  <ArrowRightCircle className="w-12 h-12 text-gray-400" />
+                </div>
 
-              <Card className="p-6 border-red-200 bg-red-50">
-                <h3 className="text-xl font-semibold text-red-700 mb-4">人材不足・スキル不足</h3>
-                <p className="text-gray-700">
-                  動画編集スキルを持つ人が社内にいなかったり、担当者が他の業務と兼任で人手が足リなかったりする。このような現状から外注が多く、動画制作を内製化するのはハードルが高いのが現状である。
-                </p>
-              </Card>
-
-              <Card className="p-6 border-red-200 bg-red-50">
-                <h3 className="text-xl font-semibold text-red-700 mb-4">品質維持・改善の難しさ</h3>
-                <p className="text-gray-700">
-                  クリエイティブの質を高め、効果検証に基づく改善を継続する体制が整っていない企業が多く、動画広告を出しても成果最大化に繋がらない。またクオリティは完全に制作者に依存するため、動画の品質を担保できない。
-                </p>
-              </Card>
-            </motion.div>
-
-            {/* Solutions */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
-              <Card className="p-6 border-green-200 bg-green-50">
-                <h3 className="text-xl font-semibold text-green-700 mb-4">自動化によるコスト削減</h3>
-                <p className="text-gray-700">
-                  AIで動画制作の工程をすべて代替することで、人手に依存することがなくなり、人件費・制作費削減による低コストでの動画制作が実現可能になる。低コストで動画制作が可能に。
-                </p>
-              </Card>
-
-              <Card className="p-6 border-green-200 bg-green-50">
-                <h3 className="text-xl font-semibold text-green-700 mb-4">高速なコンテンツ作成</h3>
-                <p className="text-gray-700">
-                  AI技術を活用することで、従来数週間以上かかっていた動画制作を最短数分~数時間で完了できる。これにより、トレンドやマーケティング施策の変更に即座に対応することが可能になり、今までにない広告効果を得られる。
-                </p>
-              </Card>
-
-              <Card className="p-6 border-green-200 bg-green-50">
-                <h3 className="text-xl font-semibold text-green-700 mb-4">専門スキル不要の簡便さ</h3>
-                <p className="text-gray-700">
-                  AIに従って商品の情報や宣伝ポイントを入力し、広告の形態を選択していくだけで、動画制作の専門的な知識がなくても動画制作が可能。AIが台本から音声まで作成するため、広告制作の素人でもプロ並みの仕上がりにできる。
-                </p>
-              </Card>
-
-              <Card className="p-6 border-green-200 bg-green-50">
-                <h3 className="text-xl font-semibold text-green-700 mb-4">品質とクリエイティビティの両立</h3>
-                <p className="text-gray-700">
-                  AIが高品質の動画広告を作成してくれるため、品質が安定している上、宣伝の方向性や、動画の雰囲気を変更した複数の広告動画を簡単に作成することが可能であり、ABテスト等の広告改善がスムーズに行える。
-                </p>
-              </Card>
-            </motion.div>
+                <Card className="p-6 bg-white shadow-lg rounded-lg border-l-4 border-green-500">
+                  <h3 className="flex items-center justify-center text-2xl font-semibold text-gray-800 text-center">
+                    <CheckCircle2 className="w-7 h-7 text-green-500 mr-2" />
+                    {pair.solution}
+                  </h3>
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
