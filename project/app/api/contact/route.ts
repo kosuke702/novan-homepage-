@@ -1,14 +1,21 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import { useToast } from "@/components/ui/use-toast";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { company, name, email, phone, message } = body;
 
+    // 必須フィールドの検証
+    if (!name || !email || !message) {
+      return NextResponse.json(
+        { error: '必須項目が入力されていません' },
+        { status: 400 }
+      );
+    }
+
     const transporter = nodemailer.createTransport({
-      host: 'smtp.sendgrid.net',  // SendGridを使用する場合
+      host: 'smtp.sendgrid.net',
       port: 587,
       secure: false,
       auth: {
@@ -33,15 +40,15 @@ ${message}
       replyTo: email,
     });
 
-    const { toast } = useToast();
-    toast({
-      title: "送信完了",
-      description: "お問い合わせを受け付けました。",
+    return NextResponse.json({ 
+      success: true,
+      message: 'お問い合わせを受け付けました'
     });
-
-    return NextResponse.json({ success: true });
   } catch (error) {
     console.error('メール送信エラー:', error);
-    return NextResponse.json({ error: 'メール送信に失敗しました' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'メール送信に失敗しました' },
+      { status: 500 }
+    );
   }
 } 
