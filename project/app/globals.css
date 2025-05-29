@@ -123,3 +123,64 @@
   transform: translateY(-2px);
   opacity: 1;
 }
+
+/* タブのスタイリング */
+.tabs-container [role="tablist"] {
+  background: transparent !important;
+  border: none !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+.tabs-container [role="tab"] {
+  background: white !important;
+  border: 1px solid #e5e7eb !important;
+  margin: 0 !important;
+  width: 100% !important;
+  height: auto !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 0.5rem !important;
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+  font-weight: 500 !important;
+  color: #374151 !important;
+  transition: all 0.2s !important;
+  position: relative !important;
+}
+
+.tabs-container [role="tab"][data-state="active"] {
+  background: #f0fdf4 !important;
+  border-color: #22c55e !important;
+  color: #15803d !important;
+}
+
+.tabs-container [role="tabpanel"] {
+  position: relative !important;
+  z-index: 1 !important;
+  margin-top: 1rem !important;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.tabs-container [role="tabpanel"][data-state="active"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* モバイル向けのスタイル調整 */
+@media (max-width: 768px) {
+  .tabs-container [role="tablist"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+
+  .tabs-container [role="tab"] {
+    margin-bottom: 0.25rem !important;
+  }
+
+  .tabs-container [role="tabpanel"] {
+    margin-top: 1.5rem !important;
+  }
+}
