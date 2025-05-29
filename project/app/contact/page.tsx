@@ -1,0 +1,66 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { Card } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+
+export default function ContactPage() {
+  return (
+    <div className="min-h-screen bg-white pt-24 pb-16">
+      <div className="container mx-auto px-4">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-4xl font-bold text-center mb-16"
+        >
+          お問い合わせ
+        </motion.h1>
+
+        <div className="max-w-2xl mx-auto">
+          <Card className="p-8">
+            <form className="space-y-6">
+              <div className="space-y-2">
+                <Label htmlFor="company">会社名</Label>
+                <Input id="company" placeholder="株式会社○○" />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="name">お名前 <span className="text-red-500">*</span></Label>
+                <Input id="name" placeholder="山田太郎" required />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="email">メールアドレス <span className="text-red-500">*</span></Label>
+                <Input id="email" type="email" placeholder="example@email.com" required />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="phone">電話番号</Label>
+                <Input id="phone" type="tel" placeholder="03-1234-5678" />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="message">お問い合わせ内容 <span className="text-red-500">*</span></Label>
+                <Textarea
+                  id="message"
+                  placeholder="お問い合わせ内容をご記入ください"
+                  rows={5}
+                  required
+                />
+              </div>
+
+              <div className="text-center">
+                <Button type="submit" size="lg">
+                  送信する
+                </Button>
+              </div>
+            </form>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+}
