@@ -6,6 +6,11 @@ import { Card } from '@/components/ui/card';
 export default function NewsPage() {
   const newsItems = [
     {
+      date: '2025.06.01',
+      category: 'お知らせ',
+      title: '株式会社Novanを設立しました',
+    },
+    {
       date: '2024.04.01',
       category: 'プレスリリース',
       title: 'AI動画生成サービスの提供を開始',
