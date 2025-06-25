@@ -10,21 +10,25 @@ export default function CompanyPage() {
       name: '池内大翔',
       nameEn: 'Hiroto Ikeuchi',
       position: '代表取締役社長',
+      description: 'AI技術の研究開発をリードし、革新的なソリューションでビジネスの未来を創造します。',
     },
     {
       name: '河内友希',
       nameEn: 'Yuki Kawachi',
       position: '取締役副社長',
+      description: '事業戦略とオペレーション全体を統括。持続可能な成長と顧客満足度の向上を目指します。',
     },
     {
       name: '久米凱斗',
       nameEn: 'Kaito Kume',
       position: '取締役',
+      description: 'プロダクト開発と技術チームのマネジメントを担当。ユーザー中心の製品設計を推進します。',
     },
     {
       name: '森下拓紀',
       nameEn: 'Takunori Morishita',
       position: '取締役',
+      description: 'マーケティングとグローバル展開を主導。Novanの技術を世界に広める役割を担います。',
     },
   ];
 
@@ -51,11 +55,12 @@ export default function CompanyPage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card className="p-6 text-center">
+                <Card className="p-6 text-center h-full flex flex-col">
                   <div className="w-32 h-32 mx-auto mb-4 bg-gray-200 rounded-full" />
                   <h3 className="text-xl font-bold mb-1">{executive.name}</h3>
                   <p className="text-sm text-gray-500 mb-2">{executive.nameEn}</p>
-                  <p className="text-gray-600">{executive.position}</p>
+                  <p className="text-gray-700 font-semibold">{executive.position}</p>
+                  <p className="text-sm text-gray-600 mt-4 text-left flex-grow">{executive.description}</p>
                 </Card>
               </motion.div>
             ))}
@@ -108,7 +113,7 @@ export default function CompanyPage() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <dt className="font-semibold">設立</dt>
-                  <dd className="md:col-span-2">2024年12月</dd>
+                  <dd className="md:col-span-2">2025年6月</dd>
                 </div>
               </dl>
             </Card>
