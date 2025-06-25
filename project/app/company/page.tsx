@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
-import { MapPin, Mail, Phone } from 'lucide-react';
+import Image from 'next/image';
 
 export default function CompanyPage() {
   const executives = [
@@ -11,24 +11,28 @@ export default function CompanyPage() {
       nameEn: 'Hiroto Ikeuchi',
       position: '代表取締役社長',
       description: 'AI技術の研究開発をリードし、革新的なソリューションでビジネスの未来を創造します。',
+      image: '/members/ikeuchi.png',
     },
     {
       name: '河内友希',
       nameEn: 'Yuki Kawachi',
       position: '取締役副社長',
       description: '事業戦略とオペレーション全体を統括。持続可能な成長と顧客満足度の向上を目指します。',
+      image: '/members/kawachi.png',
     },
     {
       name: '久米凱斗',
       nameEn: 'Kaito Kume',
       position: '取締役',
       description: 'プロダクト開発と技術チームのマネジメントを担当。ユーザー中心の製品設計を推進します。',
+      image: '/members/kume.png',  
     },
     {
       name: '森下拓紀',
       nameEn: 'Takunori Morishita',
       position: '取締役',
       description: 'マーケティングとグローバル展開を主導。Novanの技術を世界に広める役割を担います。',
+      image: '/members/morishita.png',
     },
   ];
 
@@ -56,7 +60,13 @@ export default function CompanyPage() {
                 transition={{ delay: index * 0.1 }}
               >
                 <Card className="p-6 text-center h-full flex flex-col">
-                  <div className="w-32 h-32 mx-auto mb-4 bg-gray-200 rounded-full" />
+                  <Image
+                    src={executive.image}
+                    alt={executive.name}
+                    width={128}
+                    height={128}
+                    className="w-32 h-32 mx-auto mb-4 rounded-full object-cover"
+                  />
                   <h3 className="text-xl font-bold mb-1">{executive.name}</h3>
                   <p className="text-sm text-gray-500 mb-2">{executive.nameEn}</p>
                   <p className="text-gray-700 font-semibold">{executive.position}</p>
