@@ -10,21 +10,6 @@ export default function NewsPage() {
       category: 'お知らせ',
       title: '株式会社Novanを設立しました',
     },
-    {
-      date: '2024.04.01',
-      category: 'プレスリリース',
-      title: 'AI動画生成サービスの提供を開始',
-    },
-    {
-      date: '2024.03.15',
-      category: 'お知らせ',
-      title: '本社オフィスを渋谷に移転',
-    },
-    {
-      date: '2024.02.01',
-      category: 'プレスリリース',
-      title: '資金調達を実施',
-    },
   ];
 
   return (
