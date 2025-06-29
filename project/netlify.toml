@@ -1,0 +1,3 @@
+[build]
+  command = "npm install && next build"
+  publish = ".next"
