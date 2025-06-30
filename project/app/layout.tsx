@@ -11,8 +11,12 @@ const playfair = Playfair_Display({
   variable: '--font-playfair',
 });
 
+
 export const metadata: Metadata = {
-  title: 'Novan株式会社',
+  title: {
+    default: 'Novan株式会社', // デフォルトのタイトル
+    template: '%s | Novan株式会社', // 各ページのタイトルのテンプレート
+  },
   description: 'テクノロジーで常識を破壊する',
 };
 
